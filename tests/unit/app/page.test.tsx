@@ -33,4 +33,12 @@ describe('Home Page', () => {
     const heading = screen.getByRole('heading', { level: 1 })
     expect(heading).toHaveClass('text-8xl', 'font-bold', 'md:text-9xl')
   })
+
+  it('should render a button inside the heading', () => {
+    render(<Home />)
+
+    const button = screen.getByRole('button')
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveAttribute('type', 'button')
+  })
 })
