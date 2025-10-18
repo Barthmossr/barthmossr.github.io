@@ -26,4 +26,11 @@ describe('Home Page', () => {
     const heading = screen.getByRole('heading', { level: 1 })
     expect(heading).toHaveTextContent('B')
   })
+
+  it('should render heading with correct classes', () => {
+    render(<Home />)
+
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toHaveClass('text-8xl', 'font-bold', 'md:text-9xl')
+  })
 })
