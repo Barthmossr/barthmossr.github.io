@@ -55,4 +55,13 @@ describe('Home Page', () => {
     const button = screen.getByRole('button')
     expect(button).toHaveClass('cursor-pointer')
   })
+
+  it('should have gradient background style applied to heading', () => {
+    render(<Home />)
+
+    const heading = screen.getByRole('heading', { level: 1 })
+    const style = window.getComputedStyle(heading)
+
+    expect(style.background).toContain('linear-gradient')
+  })
 })
