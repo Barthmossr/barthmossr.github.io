@@ -59,4 +59,13 @@ describe('TextGradient Component', () => {
 
     expect(element).toHaveClass('inline-block', 'text-xl', 'font-bold')
   })
+
+  it('should render as span element', () => {
+    const { container } = render(
+      <TextGradient as='span'>Span Text</TextGradient>,
+    )
+    const element = container.firstChild
+
+    expect(element?.nodeName).toBe('SPAN')
+  })
 })
