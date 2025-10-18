@@ -24,4 +24,11 @@ describe('TextGradient Component', () => {
 
     expect(screen.getByText('Test Text')).toBeInTheDocument()
   })
+
+  it('should apply default inline-block class', () => {
+    const { container } = render(<TextGradient>Content</TextGradient>)
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveClass('inline-block')
+  })
 })
