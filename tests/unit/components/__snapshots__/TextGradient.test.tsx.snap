@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TextGradient Component > should match snapshot 1`] = `
+<div>
+  <div
+    class="inline-block test-class"
+    style="background: linear-gradient(to right, rgb(80, 150, 220), rgb(255, 200, 120)); -webkit-text-fill-color: transparent;"
+  >
+    Snapshot Content
+  </div>
+</div>
+`;

@@ -77,4 +77,11 @@ describe('TextGradient Component', () => {
 
     expect(element?.nodeName).toBe('P')
   })
+
+  it('should match snapshot', () => {
+    const { container } = render(
+      <TextGradient className='test-class'>Snapshot Content</TextGradient>,
+    )
+    expect(container).toMatchSnapshot()
+  })
 })
