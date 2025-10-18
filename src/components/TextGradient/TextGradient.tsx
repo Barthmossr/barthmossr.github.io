@@ -1,8 +1,12 @@
 import { TextGradientProps } from './TextGradient.types'
 
-function TextGradient({ children, className = '' }: TextGradientProps) {
+function TextGradient({
+  children,
+  className = '',
+  as: Component = 'div',
+}: TextGradientProps) {
   return (
-    <div
+    <Component
       className={`inline-block ${className}`}
       style={{
         background:
@@ -13,7 +17,7 @@ function TextGradient({ children, className = '' }: TextGradientProps) {
       }}
     >
       {children}
-    </div>
+    </Component>
   )
 }
 
