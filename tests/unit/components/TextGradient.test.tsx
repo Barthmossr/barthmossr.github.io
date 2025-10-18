@@ -50,4 +50,13 @@ describe('TextGradient Component', () => {
         'linear-gradient(to right, rgb(80, 150, 220), rgb(255, 200, 120))',
     })
   })
+
+  it('should render with multiple classes', () => {
+    const { container } = render(
+      <TextGradient className='text-xl font-bold'>Content</TextGradient>,
+    )
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveClass('inline-block', 'text-xl', 'font-bold')
+  })
 })
