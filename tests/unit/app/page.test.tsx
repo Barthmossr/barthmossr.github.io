@@ -19,4 +19,11 @@ describe('Home Page', () => {
     const heading = screen.getByRole('heading', { level: 1 })
     expect(heading).toBeInTheDocument()
   })
+
+  it('should render heading with correct text content', () => {
+    render(<Home />)
+
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toHaveTextContent('B')
+  })
 })
