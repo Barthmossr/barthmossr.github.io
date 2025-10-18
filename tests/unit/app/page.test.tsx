@@ -1,9 +1,13 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, afterEach } from 'vitest'
+import { render, screen, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 import Home from '@/app/page'
 
 describe('Home Page', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('should render the main container with correct classes', () => {
     const { container } = render(<Home />)
     const mainDiv = container.firstChild
