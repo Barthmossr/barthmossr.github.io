@@ -1,0 +1,10 @@
+node_modules
+.next
+coverage
+dist
+build
+*.lock
+package-lock.json
+tests/visual/videos
+tests/visual/screenshots
+cypress/downloads
