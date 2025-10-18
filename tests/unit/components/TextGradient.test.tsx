@@ -31,4 +31,13 @@ describe('TextGradient Component', () => {
 
     expect(element).toHaveClass('inline-block')
   })
+
+  it('should merge custom className with default class', () => {
+    const { container } = render(
+      <TextGradient className='custom-class'>Content</TextGradient>,
+    )
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveClass('inline-block', 'custom-class')
+  })
 })
