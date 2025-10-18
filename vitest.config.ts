@@ -24,6 +24,8 @@ export default defineConfig({
         '**/*.d.ts',
         '**/*.test.{ts,tsx}',
         '**/*.cy.{ts,tsx}',
+        '**/layout.tsx',
+        '**/*.types.ts',
       ],
     },
   },
