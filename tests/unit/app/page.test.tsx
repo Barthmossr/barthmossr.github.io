@@ -48,4 +48,11 @@ describe('Home Page', () => {
     const button = screen.getByRole('button')
     expect(button).toHaveTextContent('B')
   })
+
+  it('should render button with cursor-pointer class', () => {
+    render(<Home />)
+
+    const button = screen.getByRole('button')
+    expect(button).toHaveClass('cursor-pointer')
+  })
 })
