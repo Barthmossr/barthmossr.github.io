@@ -10,4 +10,12 @@ describe('TextGradient Component', () => {
 
     expect(element?.nodeName).toBe('DIV')
   })
+
+  it('should render with custom tag', () => {
+    render(<TextGradient as='h1'>Heading</TextGradient>)
+
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveTextContent('Heading')
+  })
 })
