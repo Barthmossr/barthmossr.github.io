@@ -40,4 +40,14 @@ describe('TextGradient Component', () => {
 
     expect(element).toHaveClass('inline-block', 'custom-class')
   })
+
+  it('should apply gradient background style', () => {
+    const { container } = render(<TextGradient>Content</TextGradient>)
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveStyle({
+      background:
+        'linear-gradient(to right, rgb(80, 150, 220), rgb(255, 200, 120))',
+    })
+  })
 })
