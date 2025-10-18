@@ -64,4 +64,9 @@ describe('Home Page', () => {
 
     expect(style.background).toContain('linear-gradient')
   })
+
+  it('should match snapshot', () => {
+    const { container } = render(<Home />)
+    expect(container).toMatchSnapshot()
+  })
 })
