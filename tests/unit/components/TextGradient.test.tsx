@@ -18,4 +18,10 @@ describe('TextGradient Component', () => {
     expect(heading).toBeInTheDocument()
     expect(heading).toHaveTextContent('Heading')
   })
+
+  it('should render children correctly', () => {
+    render(<TextGradient>Test Text</TextGradient>)
+
+    expect(screen.getByText('Test Text')).toBeInTheDocument()
+  })
 })
