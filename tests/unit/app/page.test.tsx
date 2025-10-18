@@ -41,4 +41,11 @@ describe('Home Page', () => {
     expect(button).toBeInTheDocument()
     expect(button).toHaveAttribute('type', 'button')
   })
+
+  it('should render button with correct text', () => {
+    render(<Home />)
+
+    const button = screen.getByRole('button')
+    expect(button).toHaveTextContent('B')
+  })
 })
