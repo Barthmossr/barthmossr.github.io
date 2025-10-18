@@ -12,4 +12,11 @@ describe('Home Page', () => {
     expect(mainDiv).toHaveClass('h-screen', 'w-screen')
     expect(mainDiv).toHaveClass('overflow-hidden', 'scroll-smooth')
   })
+
+  it('should render an h1 heading', () => {
+    render(<Home />)
+
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toBeInTheDocument()
+  })
 })
