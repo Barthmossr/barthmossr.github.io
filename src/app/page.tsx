@@ -1,7 +1,9 @@
+import { TextGradient } from '@/components/TextGradient/TextGradient'
+
 export default function Home() {
   return (
     <div>
-      <h1>B</h1>
+      <TextGradient className='text-5xl font-bold'>B</TextGradient>
     </div>
   )
 }
