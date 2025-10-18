@@ -68,4 +68,13 @@ describe('TextGradient Component', () => {
 
     expect(element?.nodeName).toBe('SPAN')
   })
+
+  it('should render as p element', () => {
+    const { container } = render(
+      <TextGradient as='p'>Paragraph Text</TextGradient>,
+    )
+    const element = container.firstChild
+
+    expect(element?.nodeName).toBe('P')
+  })
 })
