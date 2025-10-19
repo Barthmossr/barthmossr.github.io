@@ -81,29 +81,34 @@ describe('Home Page', () => {
       cy.get('h1 button').contains('B').should('be.visible')
     })
 
-    it('should have hidden "art" text initially', () => {
-      cy.get('h1 button').contains('art').should('exist')
+    it('should have hidden "arthmossr" text initially', () => {
+      cy.get('h1 button').contains('arthmossr').should('exist')
     })
 
     it('should expand to show full name when clicked', () => {
       cy.get('h1 button').click()
-      cy.get('h1 button').should('contain.text', 'Bart')
+      cy.wait(1700) // Wait for 1600ms animation + buffer
+      cy.get('h1 button').should('contain.text', 'Barthmossr')
     })
 
-    it('should collapse back to B when clicked again', () => {
+    it('should not collapse when clicked again', () => {
       cy.get('h1 button').click()
-      cy.get('h1 button').should('contain.text', 'Bart')
+      cy.wait(1700)
+      cy.get('h1 button').should('contain.text', 'Barthmossr')
       cy.get('h1 button').click()
-      cy.wait(600)
-      cy.get('h1 button').contains('B').should('be.visible')
+      cy.wait(1700)
+      // Should still show full name
+      cy.get('h1 button').should('contain.text', 'Barthmossr')
     })
 
     it('should animate expansion smoothly', () => {
       cy.get('h1 button').click()
-      cy.wait(100)
+      cy.wait(200)
       cy.get('h1 button').should('contain.text', 'B')
-      cy.wait(500)
-      cy.get('h1 button').should('contain.text', 'Bart')
+      cy.wait(800)
+      cy.get('h1 button').should('contain.text', 'Barthm')
+      cy.wait(800)
+      cy.get('h1 button').should('contain.text', 'Barthmossr')
     })
   })
 

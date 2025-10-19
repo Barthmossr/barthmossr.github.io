@@ -28,15 +28,15 @@ describe('AnimatedNameButton Component', () => {
     expect(screen.getByText('B')).toBeInTheDocument()
   })
 
-  it('should have hidden "art" text initially', () => {
+  it('should have hidden "arthmossr" text initially', () => {
     render(<AnimatedNameButton />)
 
-    const artText = screen.getByText('art')
+    const artText = screen.getByText('arthmossr')
     expect(artText).toBeInTheDocument()
-    expect(artText).toHaveClass('max-w-0', 'opacity-0')
+    expect(artText).toHaveClass('max-w-0')
   })
 
-  it('should have cursor-pointer class', () => {
+  it('should have cursor-pointer class initially', () => {
     render(<AnimatedNameButton />)
 
     const button = screen.getByRole('button')
@@ -61,37 +61,41 @@ describe('AnimatedNameButton Component', () => {
     expect(button).toHaveClass('hover:scale-105', 'active:scale-95')
   })
 
-  it('should have relative positioning', () => {
+  it('should have inline-flex and items-baseline classes', () => {
     render(<AnimatedNameButton />)
 
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('relative')
+    expect(button).toHaveClass('inline-flex', 'items-baseline')
   })
 
   it('should expand text when clicked', () => {
     render(<AnimatedNameButton />)
 
     const button = screen.getByRole('button')
-    const artText = screen.getByText('art')
+    const artText = screen.getByText('arthmossr')
 
-    expect(artText).toHaveClass('max-w-0', 'opacity-0')
+    expect(artText).toHaveClass('max-w-0')
+    expect(button).not.toBeDisabled()
 
     fireEvent.click(button)
 
-    expect(artText).toHaveClass('max-w-[15ch]', 'opacity-100')
+    expect(artText).toHaveClass('max-w-[30ch]')
+    expect(button).toBeDisabled()
   })
 
-  it('should collapse text when clicked again', () => {
+  it('should not collapse when clicked again', () => {
     render(<AnimatedNameButton />)
 
     const button = screen.getByRole('button')
-    const artText = screen.getByText('art')
+    const artText = screen.getByText('arthmossr')
 
     fireEvent.click(button)
-    expect(artText).toHaveClass('max-w-[15ch]', 'opacity-100')
+    expect(artText).toHaveClass('max-w-[30ch]')
+    expect(button).toHaveClass('cursor-default')
 
     fireEvent.click(button)
-    expect(artText).toHaveClass('max-w-0', 'opacity-0')
+    // Should still be expanded
+    expect(artText).toHaveClass('max-w-[30ch]')
   })
 
   it('should apply custom className', () => {
@@ -101,24 +105,18 @@ describe('AnimatedNameButton Component', () => {
     expect(button).toHaveClass('custom-class')
   })
 
-  it('should have inline-block span for B', () => {
+  it('should have plain span for B', () => {
     render(<AnimatedNameButton />)
 
     const bText = screen.getByText('B')
-    expect(bText).toHaveClass('inline-block')
+    expect(bText).toBeInTheDocument()
   })
 
-  it('should have transition properties for art text', () => {
+  it('should have transition properties for arthmossr text', () => {
     render(<AnimatedNameButton />)
 
-    const artText = screen.getByText('art')
-    expect(artText).toHaveClass(
-      'inline-block',
-      'overflow-hidden',
-      'transition-all',
-      'duration-500',
-      'ease-out',
-    )
+    const artText = screen.getByText('arthmossr')
+    expect(artText).toHaveClass('overflow-hidden', 'whitespace-nowrap')
   })
 
   it('should match snapshot when collapsed', () => {
