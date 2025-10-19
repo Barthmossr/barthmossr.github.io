@@ -87,7 +87,7 @@ describe('Home Page', () => {
 
     it('should expand to show full name when clicked', () => {
       cy.get('h1 button').click()
-      cy.wait(1700) // Wait for 1600ms animation + buffer
+      cy.wait(1700)
       cy.get('h1 button').should('contain.text', 'Barthmossr')
     })
 
@@ -95,9 +95,8 @@ describe('Home Page', () => {
       cy.get('h1 button').click()
       cy.wait(1700)
       cy.get('h1 button').should('contain.text', 'Barthmossr')
-      cy.get('h1 button').click()
-      cy.wait(1700)
-      // Should still show full name
+      cy.get('h1 button').should('be.disabled')
+      cy.get('h1 button').should('have.class', 'cursor-default')
       cy.get('h1 button').should('contain.text', 'Barthmossr')
     })
 

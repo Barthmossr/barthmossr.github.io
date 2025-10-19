@@ -94,7 +94,6 @@ describe('AnimatedNameButton Component', () => {
     expect(button).toHaveClass('cursor-default')
 
     fireEvent.click(button)
-    // Should still be expanded
     expect(artText).toHaveClass('max-w-[30ch]')
   })
 
