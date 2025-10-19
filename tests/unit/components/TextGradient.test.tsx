@@ -1,0 +1,91 @@
+import { describe, it, expect, afterEach } from 'vitest'
+import { render, screen, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/vitest'
+import { TextGradient } from '@/components/TextGradient'
+
+describe('TextGradient Component', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
+  it('should render with default tag (div)', () => {
+    const { container } = render(<TextGradient>Test Content</TextGradient>)
+    const element = container.firstChild
+
+    expect(element?.nodeName).toBe('DIV')
+  })
+
+  it('should render with custom tag', () => {
+    render(<TextGradient as='h1'>Heading</TextGradient>)
+
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveTextContent('Heading')
+  })
+
+  it('should render children correctly', () => {
+    render(<TextGradient>Test Text</TextGradient>)
+
+    expect(screen.getByText('Test Text')).toBeInTheDocument()
+  })
+
+  it('should apply default inline-block class', () => {
+    const { container } = render(<TextGradient>Content</TextGradient>)
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveClass('inline-block')
+  })
+
+  it('should merge custom className with default class', () => {
+    const { container } = render(
+      <TextGradient className='custom-class'>Content</TextGradient>,
+    )
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveClass('inline-block', 'custom-class')
+  })
+
+  it('should apply gradient background style', () => {
+    const { container } = render(<TextGradient>Content</TextGradient>)
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveStyle({
+      background:
+        'linear-gradient(to right, rgb(80, 150, 220), rgb(255, 200, 120))',
+    })
+  })
+
+  it('should render with multiple classes', () => {
+    const { container } = render(
+      <TextGradient className='text-xl font-bold'>Content</TextGradient>,
+    )
+    const element = container.firstChild as HTMLElement
+
+    expect(element).toHaveClass('inline-block', 'text-xl', 'font-bold')
+  })
+
+  it('should render as span element', () => {
+    const { container } = render(
+      <TextGradient as='span'>Span Text</TextGradient>,
+    )
+    const element = container.firstChild
+
+    expect(element?.nodeName).toBe('SPAN')
+  })
+
+  it('should render as p element', () => {
+    const { container } = render(
+      <TextGradient as='p'>Paragraph Text</TextGradient>,
+    )
+    const element = container.firstChild
+
+    expect(element?.nodeName).toBe('P')
+  })
+
+  it('should match snapshot', () => {
+    const { container } = render(
+      <TextGradient className='test-class'>Snapshot Content</TextGradient>,
+    )
+    expect(container).toMatchSnapshot()
+  })
+})
