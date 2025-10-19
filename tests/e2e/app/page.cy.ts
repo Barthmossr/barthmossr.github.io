@@ -23,7 +23,8 @@ describe('Home Page', () => {
     })
 
     it('should render h1 with text B', () => {
-      cy.get('h1').should('have.text', 'B')
+      cy.get('h1 button').should('contain.text', 'B')
+      cy.get('h1 button span').first().should('have.text', 'B')
     })
 
     it('should have gradient text styles', () => {
@@ -63,12 +64,46 @@ describe('Home Page', () => {
       cy.get('h1 button').should('have.class', 'cursor-pointer')
     })
 
-    it('should display text B in button', () => {
-      cy.get('h1 button').should('have.text', 'B')
+    it('should have transition classes', () => {
+      cy.get('h1 button')
+        .should('have.class', 'transition-transform')
+        .and('have.class', 'duration-300')
+        .and('have.class', 'ease-in-out')
     })
 
-    it('should be clickable', () => {
-      cy.get('h1 button').click().should('exist')
+    it('should have hover and active scale classes', () => {
+      cy.get('h1 button')
+        .should('have.class', 'hover:scale-105')
+        .and('have.class', 'active:scale-95')
+    })
+
+    it('should display initial text B', () => {
+      cy.get('h1 button').contains('B').should('be.visible')
+    })
+
+    it('should have hidden "art" text initially', () => {
+      cy.get('h1 button').contains('art').should('exist')
+    })
+
+    it('should expand to show full name when clicked', () => {
+      cy.get('h1 button').click()
+      cy.get('h1 button').should('contain.text', 'Bart')
+    })
+
+    it('should collapse back to B when clicked again', () => {
+      cy.get('h1 button').click()
+      cy.get('h1 button').should('contain.text', 'Bart')
+      cy.get('h1 button').click()
+      cy.wait(600)
+      cy.get('h1 button').contains('B').should('be.visible')
+    })
+
+    it('should animate expansion smoothly', () => {
+      cy.get('h1 button').click()
+      cy.wait(100)
+      cy.get('h1 button').should('contain.text', 'B')
+      cy.wait(500)
+      cy.get('h1 button').should('contain.text', 'Bart')
     })
   })
 

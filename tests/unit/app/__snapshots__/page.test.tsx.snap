@@ -10,10 +10,21 @@ exports[`Home Page > should match snapshot 1`] = `
       style="background: linear-gradient(to right, rgb(80, 150, 220), rgb(255, 200, 120)); -webkit-text-fill-color: transparent;"
     >
       <button
-        class="cursor-pointer"
+        class="relative cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95 "
         type="button"
       >
-        B
+        <span
+          class="inline-block"
+        >
+          B
+        </span>
+        <span
+          aria-hidden="true"
+          class="inline-block overflow-hidden transition-all duration-500 ease-out max-w-0 opacity-0"
+          style="transition-property: max-width, opacity;"
+        >
+          art
+        </span>
       </button>
     </h1>
   </div>

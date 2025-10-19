@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AnimatedNameButton Component > should match snapshot when collapsed 1`] = `
+<div>
+  <button
+    class="relative cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95 "
+    type="button"
+  >
+    <span
+      class="inline-block"
+    >
+      B
+    </span>
+    <span
+      aria-hidden="true"
+      class="inline-block overflow-hidden transition-all duration-500 ease-out max-w-0 opacity-0"
+      style="transition-property: max-width, opacity;"
+    >
+      art
+    </span>
+  </button>
+</div>
+`;
+
+exports[`AnimatedNameButton Component > should match snapshot when expanded 1`] = `
+<div>
+  <button
+    class="relative cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95 "
+    type="button"
+  >
+    <span
+      class="inline-block"
+    >
+      B
+    </span>
+    <span
+      aria-hidden="false"
+      class="inline-block overflow-hidden transition-all duration-500 ease-out max-w-[15ch] opacity-100"
+      style="transition-property: max-width, opacity;"
+    >
+      art
+    </span>
+  </button>
+</div>
+`;

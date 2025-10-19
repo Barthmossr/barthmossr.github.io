@@ -38,7 +38,11 @@ describe('TextGradient Component', () => {
     })
 
     it('should have readable text with gradient', () => {
-      cy.get('h1 button').should('be.visible').and('have.text', 'B')
+      cy.get('h1 button').should('be.visible')
+      cy.get('h1 button span')
+        .first()
+        .should('have.text', 'B')
+        .and('be.visible')
     })
   })
 
